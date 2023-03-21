@@ -2,6 +2,8 @@ const express = require('express');
 const { Todo } = require('../mongo')
 const router = express.Router();
 
+const { getAsync, setAsync } = require('../redis/index')
+
 /* GET todos listing. */
 router.get('/', async (_, res) => {
   const todos = await Todo.find({})
@@ -14,6 +16,11 @@ router.post('/', async (req, res) => {
     text: req.body.text,
     done: false
   })
+  console.log("Created new todo, incrementing counter")
+  const addedTodosOrNull = await getAsync("added_todos")
+  const addedTodosOrZero = addedTodosOrNull ? Number(addedTodosOrNull) : 0
+  const result = await setAsync("added_todos", addedTodosOrZero + 1)
+  console.log("Set result ->", result)
   res.send(todo);
 });
 
@@ -41,6 +48,7 @@ singleRouter.get('/', async (req, res) => {
 
 /* PUT todo. */
 // TODO: Fix middleware throwing 404, I can't be bothered
+// TODO: Add to counter here too
 singleRouter.put('/', async (req, res) => {
   const { id } = req.params
   if(!Todo.exists({_id: id})) {
