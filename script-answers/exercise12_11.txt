@@ -1,0 +1,27 @@
+Script started on 2023-03-21 16:27:40+02:00 [TERM="xterm-256color" TTY="/dev/pts/7" COLUMNS="209" LINES="52"]
+]0;koveror@LAPTOP-PKE77LB7: ~/git/part12/part12-containers-applications/todo-app/todo-backend[01;32mkoveror@LAPTOP-PKE77LB7[00m:[01;34m~/git/part12/part12-containers-applications/todo-app/todo-backend[00m$ exitdocker exec -it todo-backend-mongo-1 bashexit[Kdocker exec -it todo-backend-mongo-1 bash[22Pcontainer lsmpose -f docker-compose.dev.yml up -dexit[Kdocker compose -f docker-compose.dev.yml up -dntainer ls[Kexec -it todo-backend-mongo-1 bash[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kconstain[K[K[K[K[Ktainer list[K[K[Ks
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                     NAMES
+77d09df9b43f   mongo     "docker-entrypoint.s…"   56 minutes ago   Up 56 minutes   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+7bccbc889422   redis     "docker-entrypoint.s…"   56 minutes ago   Up 56 minutes   0.0.0.0:6378->6379/tcp    todo-backend-redis-1
+f8234ba1ad42   nginx     "/docker-entrypoint.…"   2 hours ago      Up 2 hours      0.0.0.0:8080->80/tcp      infallible_payne
+]0;koveror@LAPTOP-PKE77LB7: ~/git/part12/part12-containers-applications/todo-app/todo-backend[01;32mkoveror@LAPTOP-PKE77LB7[00m:[01;34m~/git/part12/part12-containers-applications/todo-app/todo-backend[00m$ docker container lsexit[Kdocker exec -it todo-backend-mongo-1 bash[C[1P[1P[1P[1P[1P[1P[1@r[1@e[1P[1P[C[1@-[1@r[1@e[1@d[1@i[1@s[C[C[C[C[C[C[C
+[?2004hroot@7bccbc889422:/data# [Kroot@7bccbc889422:/data# redis-cli KEYS *
+[?2004l1) "added_todos"
+[?2004hroot@7bccbc889422:/data# redis-cli KEYS *      GET added_tpd  odos
+[?2004l"0"
+[?2004hroot@7bccbc889422:/data# redis-cli GET added_todos[1P[1@SET added_todos 90001  1
+[?2004lOK
+[?2004hroot@7bccbc889422:/data# redis-cli SET added_todos 9001[5PGET added_todos
+[?2004l"9001"
+[?2004hroot@7bccbc889422:/data# redis-cli GETDEL added_todos
+[?2004l"9001"
+[?2004hroot@7bccbc889422:/data# redis-cli GETDEL added_todos[3P added_todos
+[?2004l(nil)
+[?2004hroot@7bccbc889422:/data# redis-cli GET added_todos
+[?2004l"1"
+[?2004hroot@7bccbc889422:/data# exit
+[?2004lexit
+]0;koveror@LAPTOP-PKE77LB7: ~/git/part12/part12-containers-applications/todo-app/todo-backend[01;32mkoveror@LAPTOP-PKE77LB7[00m:[01;34m~/git/part12/part12-containers-applications/todo-app/todo-backend[00m$ exit
+exit
+
+Script done on 2023-03-21 16:30:59+02:00 [COMMAND_EXIT_CODE="0"]
