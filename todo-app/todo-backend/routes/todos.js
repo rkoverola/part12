@@ -40,7 +40,7 @@ singleRouter.get('/', async (req, res) => {
 });
 
 /* PUT todo. */
-// TODO: How to not get 404?
+// TODO: Fix middleware throwing 404, I can't be bothered
 singleRouter.put('/', async (req, res) => {
   const { id } = req.params
   if(!Todo.exists({_id: id})) {
