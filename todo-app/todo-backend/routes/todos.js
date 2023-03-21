@@ -35,12 +35,26 @@ singleRouter.delete('/', async (req, res) => {
 
 /* GET todo. */
 singleRouter.get('/', async (req, res) => {
-  res.sendStatus(405); // Implement this
+  if(!req.todo) return res.sendStatus(404)
+  res.send(req.todo)
 });
 
 /* PUT todo. */
+// TODO: How to not get 404?
 singleRouter.put('/', async (req, res) => {
-  res.sendStatus(405); // Implement this
+  const { id } = req.params
+  if(!Todo.exists({_id: id})) {
+    const todo = await Todo.create({
+      text: req.body.text,
+      done: false
+    })
+    res.send(todo);
+  }
+  const todo = await Todo.findByIdAndUpdate(id, {
+    text: req.body.text,
+    done: req.body.done ? req.body.done : false
+  }, {new: true})
+  res.send(todo);
 });
 
 router.use('/:id', findByIdMiddleware, singleRouter)
