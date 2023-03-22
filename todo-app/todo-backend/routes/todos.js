@@ -50,18 +50,13 @@ singleRouter.get('/', async (req, res) => {
 // TODO: Fix middleware throwing 404, I can't be bothered
 // TODO: Add to counter here too
 singleRouter.put('/', async (req, res) => {
-  const { id } = req.params
-  if(!Todo.exists({_id: id})) {
-    const todo = await Todo.create({
-      text: req.body.text,
-      done: false
-    })
-    res.send(todo);
-  }
+  const id = req.todo.id
+  console.log("Got put with id ->", id)
   const todo = await Todo.findByIdAndUpdate(id, {
     text: req.body.text,
     done: req.body.done ? req.body.done : false
   }, {new: true})
+  console.log("Updated one ->", todo)
   res.send(todo);
 });
 
